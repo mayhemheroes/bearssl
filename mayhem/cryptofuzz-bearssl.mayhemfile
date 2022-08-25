@@ -1,0 +1,4 @@
+project: PROJECT
+target: cryptofuzz-bearssl
+cmds:
+- cmd: /out/cryptofuzz-bearssl
