@@ -18,10 +18,9 @@ FROM gcr.io/oss-fuzz-base/base-builder
 RUN apt-get update && apt-get install -y make autoconf automake libtool wget python
 COPY . BearSSL
 RUN rm -rf BearSSL/mayhem
-RUN git clone --depth 1 https://github.com/randombit/botan.git
-RUN git clone --depth 1 https://github.com/guidovranken/cryptofuzz
-RUN git clone --depth 1 https://github.com/guidovranken/cryptofuzz-corpora
-RUN wget https://boostorg.jfrog.io/artifactory/main/release/1.74.0/source/boost_1_74_0.tar.bz2
+RUN git clone --depth 1 --branch 3.10.0 https://github.com/randombit/botan.git
+RUN git clone --depth 1 https://github.com/MozillaSecurity/cryptofuzz
+RUN wget https://archives.boost.io/release/1.87.0/source/boost_1_87_0.tar.bz2
 COPY mayhem/build.sh $SRC/
 # This is to fix Fuzz Introspector build by using LLVM old pass manager
 # re https://github.com/ossf/fuzz-introspector/issues/305
